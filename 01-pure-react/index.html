@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pure React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--  this is  for core react -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- This is for manioulating with the dom -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+      // this is a normal function like as in plain js
+      function App() {
+        // const time = new Date().toLocaleTimeString();
+
+        const [time, settime] = React.useState(new Date().toLocaleTimeString());
+        React.useEffect(function () {
+          setInterval(function () {
+            settime(new Date().toLocaleTimeString());
+          });
+        }, []);
+        // React.createElement( tagname , props (null DEFAULT), childern)
+        return React.createElement("header", null, `Hello react! It's ${time}`);
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>
