@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 //destructuring
-const book = getBook(1);
+const book = getBook(3);
 console.log(book);
 const { title, author, genres, pages, publicationDate, hasMovieAdaptation } =
   book;
@@ -206,10 +206,20 @@ console.log(
 );
 
 //nullish coalsing ( prevents  the  conditions for  falsy  value)
-const count = book.reviews.librarything.reviewsCount;
-count;
+// const count = book.reviews.librarything.reviewsCount;
+// count;
 // we want number if counts but is not shaowing to fix it nulissh cloeasion  technique is used
-console.log(book.reviews.librarything.reviewsCount || "no data");
+// console.log(book.reviews.librarything.reviewsCount || "no data");
 
 // it returns the SECOND_VVAL if the FIRST_VAL is undefinedd or null not in case of 0
-console.log(book.reviews.librarything.reviewsCount ?? "no data");
+// console.log(book.reviews.librarything.reviewsCount ?? "no data");
+
+// optional chaining  ( pick the calue if it exits)
+const totalReviewCount = (book) => {
+  const goodread = book.reviews.goodreads?.reviewsCount;
+  const library = book.reviews.librarything?.reviewsCount ?? 0;
+  library;
+  goodread;
+  return goodread + library;
+};
+console.log(totalReviewCount(book));
