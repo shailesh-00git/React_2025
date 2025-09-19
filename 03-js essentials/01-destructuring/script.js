@@ -13,7 +13,7 @@ const data = [
       "literature",
     ],
     hasMovieAdaptation: true,
-    pages: 1216,
+    pages: 4,
     translations: {
       spanish: "El señor de los anillos",
       chinese: "魔戒",
@@ -23,12 +23,12 @@ const data = [
       goodreads: {
         rating: 4.52,
         ratingsCount: 630994,
-        reviewsCount: 13417,
+        reviewsCount: 0,
       },
       librarything: {
         rating: 4.53,
         ratingsCount: 47166,
-        reviewsCount: 452,
+        reviewsCount: 0,
       },
     },
   },
@@ -144,26 +144,72 @@ function getBook(id) {
 }
 
 //destructuring
-const book = getBook(2);
+const book = getBook(1);
 console.log(book);
-const { title, author, genres } = book;
-console.log(title, author);
+const { title, author, genres, pages, publicationDate, hasMovieAdaptation } =
+  book;
+// console.log(title, author);
 
-// rest operator
-const [...geners] = genres;
-console.log(geners);
+// // rest operator
+// const [...geners] = genres;
+// console.log(geners);
 
-// spread operator
-const NewGeners = [...geners, "action"];
-console.log(NewGeners);
+// // spread operator
+// const NewGeners = [...geners, "action"];
+// console.log(NewGeners);
 
-//destructuring the objects
-const updatedBook = {
-  ...book,
-  // adding new property
-  moviePublicationDate: "2025-04-22",
+// //destructuring the objects
+// const updatedBook = {
+//   ...book,
+//   // adding new property
+//   moviePublicationDate: "2025-04-22",
 
-  // overriding the property
-  pages: 1234,
+//   // overriding the property
+//   pages: 1234,
+// };
+// console.log(updatedBook);
+
+// template literals
+const summary = `  The book i.e "${book.title}" has ${book.pages} number of page was written by ${book.author} published in ${book.publicationDate}`;
+summary;
+
+// ternary operator
+const pageRange =
+  book.pages > 100 ? "Page is greater than 100" : "page is less than 1000";
+
+pageRange;
+
+//arrow functions
+const GettingYearOnly = () => {
+  return publicationDate.split("-")[0];
 };
-console.log(updatedBook);
+const showingPublicationDate = () => {
+  return publicationDate;
+};
+//split split  the date sepreated by "-"
+console.log(showingPublicationDate().split("-"));
+console.log(GettingYearOnly());
+
+//short circuting in logical operators
+console.log(hasMovieAdaptation && "this book has movie also");
+
+//falsy value : 0, "", null, undefined accetpt all other  are truthy value
+// incase of AND if FIRST_PLACE is true it returns SECOND_VALUE
+console.log(0 && "This movie has zero pages");
+// incase of OR it returns FIRST_VAL if true if false it returns SECOND_VAL
+console.log("ram" || "yadav");
+console.log(
+  book.translations.spanish || "This book does not have spanish translation"
+);
+console.log(
+  book.translations.english && "This book does not have spanish translation"
+);
+
+//nullish coalsing ( prevents  the  conditions for  falsy  value)
+const count = book.reviews.librarything.reviewsCount;
+count;
+// we want number if counts but is not shaowing to fix it nulissh cloeasion  technique is used
+console.log(book.reviews.librarything.reviewsCount || "no data");
+
+// it returns the SECOND_VVAL if the FIRST_VAL is undefinedd or null not in case of 0
+console.log(book.reviews.librarything.reviewsCount ?? "no data");
