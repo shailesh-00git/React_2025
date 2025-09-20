@@ -186,3 +186,24 @@ const sortedByPages = books
   .sort((a, b) => a.pages - b.pages)
   .map((book) => book.pages);
 sortedByPages;
+
+//############ mutable array methods ################
+// 1. Adding new book
+const newBook = {
+  id: 6,
+  title: "Who is the man standing there",
+  author: "J. K. Rolling",
+};
+const AddingNewBook = [...books, newBook];
+AddingNewBook;
+
+// 2. Deketing the book from the array
+const deleteBook = AddingNewBook.filter((book) => book.id !== 4);
+deleteBook;
+
+//  3. Update the book object in the array
+const updateBook = deleteBook.map((book) =>
+  //...SPREAD_EXISTNG_BOOK and override the value
+  book.id == 6 ? { ...book, author: "shailesh" } : book
+);
+updateBook;
