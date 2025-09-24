@@ -93,15 +93,14 @@ function Footer() {
   const closing = 24;
   const isOpen = hour >= Opening && hour <= closing;
   console.log(isOpen);
+  return <footer className="footer">{isOpen && <Order />}</footer>;
+}
+function Order() {
   return (
-    <footer className="footer">
-      {isOpen && (
-        <div className="order">
-          <p>We are open now. visit our shop or order online</p>
-          <button className="btn">Order now</button>
-        </div>
-      )}
-    </footer>
+    <div className="order">
+      <p>We are open now. visit our shop or order online</p>
+      <button className="btn">Order now</button>
+    </div>
   );
 }
 
