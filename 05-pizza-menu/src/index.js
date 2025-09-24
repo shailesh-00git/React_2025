@@ -55,16 +55,17 @@ function App() {
     </div>
   );
 }
-function Pizza() {
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) return null;
   return (
-    <div className="pizza">
-      <img src="pizzas/prosciutto.jpg" alt="pizza spinaich" />
-      <div clasaName="pizzas">
-        <h3>Pizza Prosciutto</h3>
-        <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
-        <span>$10</span>
+    <li className="pizza">
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div className="pizzas">
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 function Header() {
@@ -78,14 +79,28 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza />
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
     </main>
   );
 }
 function Footer() {
+  const hour = new Date().getHours();
+  const Opening = 9;
+  const closing = 24;
+  const isOpen = hour >= Opening && hour <= closing;
+  console.log(isOpen);
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}We're currently open!{" "}
+      {isOpen && (
+        <div className="order">
+          <p>We are open now. visit our shop or order online</p>
+          <button className="btn">Order now</button>
+        </div>
+      )}
     </footer>
   );
 }
