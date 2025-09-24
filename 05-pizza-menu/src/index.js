@@ -97,10 +97,12 @@ function Footer() {
 }
 function Order() {
   return (
-    <div className="order">
-      <p>We are open now. visit our shop or order online</p>
-      <button className="btn">Order now</button>
-    </div>
+    <>
+      <div className="order">
+        <p>We are open now. visit our shop or order online</p>
+        <button className="btn">Order now</button>
+      </div>
+    </>
   );
 }
 
