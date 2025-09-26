@@ -1,0 +1,18 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 34px;
+}
+
+.interval {
+  display: inline-flex;
+}
+
+.value {
+  margin: 0 5px;
+}
+
+.btn {
+  font-size: 24px;
+}
