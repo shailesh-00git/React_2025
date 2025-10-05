@@ -1,0 +1,42 @@
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.flash-cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+/* Each flashcard */
+.flash-cards {
+  background: #ffffff;
+  border: 1px solid #3a3838;
+  border-radius: 8px;
+  height: 150px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-size: 17px;
+
+}
+
+
+
+
+/* Flipped state */
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.selected {
+  color: white;
+  background-color: #e44346;
+  font-weight: bold;
+}
